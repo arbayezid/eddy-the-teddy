@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import teddy from '../assets/teddyLogin.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext)
 
     const handleRegister = (event) =>{
         event.preventDefault();
@@ -15,6 +17,16 @@ const Register = () => {
 
         const user = {name,photo,email,password}
         console.log(user)
+        
+        createUser(email,password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser)
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
+        
     }
 
     return (
