@@ -32,7 +32,7 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                             <div className='text-center font-medium mt-5'>
-                                <p>New to this site? <Link className='text-blue-600'>Register</Link></p>
+                                <p>New to this site? <Link to='/register' className='text-blue-600'>Register</Link></p>
                             </div>
                         </form>
                     </div>
