@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
+    const {createUser,googleSignIn} = useContext(AuthContext)
 
     const handleRegister = (event) =>{
         event.preventDefault();
@@ -25,8 +25,18 @@ const Register = () => {
         })
         .catch(error => {
             console.log(error.message)
+        })    
+    }
+
+    const handleGoogleSignIn = () =>{
+        googleSignIn()
+        .then(result =>{
+            const loggedUser = result.user
+            console.log(loggedUser)
         })
-        
+        .catch(error => {
+            console.log(error.message)
+        })
     }
 
     return (
@@ -73,6 +83,10 @@ const Register = () => {
                                 <p>Already have an account? <Link to='/login'className='text-blue-600'>Login</Link></p>
                             </div>
                         </form>
+                        <div className="divider">OR</div>
+                        <div className='text-center'>
+                        <button title='Google' onClick={handleGoogleSignIn} className='btn btn-circle btn-outline'>G</button>
+                        </div>
                     </div>
                 </div>
             </div>
