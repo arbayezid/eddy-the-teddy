@@ -51,7 +51,7 @@ const AddToy = () => {
 
                     <input className='p-2 rounded-lg' {...register("rating")} placeholder='enter toy rating' required />
 
-                    <input className='p-2 rounded-lg' {...register("avaibaleQuantity")} placeholder='enter available quantity' required />
+                    <input className='p-2 rounded-lg' {...register("availableQuantity")} placeholder='enter available quantity' required />
 
                     <input className='p-2 rounded-lg' {...register("subCategory")} placeholder='enter sub category'/>
 
