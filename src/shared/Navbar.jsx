@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../assets/tadyLogo.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
 
 const Navbar = () => {
+
+    const { logOut, user } = useContext(AuthContext)
     const navItems = <div className='flex gap-5'>
         <Link>Home</Link>
         <Link>All Toys</Link>
-        <Link>My Toys</Link>
-        <Link to='/addToy'>Add a Toys</Link>
+        {user &&
+            <div>
+                <Link className='mr-5'>My Toys</Link>
+                <Link to='/addToy'>Add a Toys</Link>
+            </div>}
+
         <Link>Blog</Link>
     </div>
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
     return (
         <div className="navbar bg-base-100 ">
             <div className="navbar-start">
@@ -30,7 +45,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login' className="btn w-20">Login</Link>
+                {user ? <button className='btn' onClick={handleLogout}>Logout</button> :
+                    <Link to='/login' className="btn w-20">Login</Link>}
             </div>
         </div>
     );
