@@ -1,14 +1,15 @@
 import React from 'react';
 import logo from '../assets/tadyLogo.png'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    const navItems = <>
-    <li><a>Home</a></li>
-    <li><a>All Toys</a></li>
-    <li><a>My Toys</a></li>
-    <li><a>Add a Toys</a></li>
-    <li><a>Blog</a></li>
-    </>
+    const navItems = <div className='flex gap-5'>
+        <Link>Home</Link>
+        <Link>All Toys</Link>
+        <Link>My Toys</Link>
+        <Link to='/addToy'>Add a Toys</Link>
+        <Link>Blog</Link>
+    </div>
     return (
         <div className="navbar bg-base-100 ">
             <div className="navbar-start">
@@ -20,7 +21,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <img style={{height: '50px', width: '50px'}} src={logo} alt="" />
+                <img style={{ height: '50px', width: '50px' }} src={logo} alt="" />
                 <a className="btn btn-ghost normal-case text-xl">Eddy the Teddy</a>
             </div>
             <div className="navbar-center hidden lg:flex">
