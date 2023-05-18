@@ -6,17 +6,19 @@ import { AuthContext } from '../providers/AuthProvider';
 const Navbar = () => {
 
     const { logOut, user } = useContext(AuthContext)
-    const navItems = <div className='flex gap-5'>
-        <Link>Home</Link>
-        <Link to='/allToys'>All Toys</Link>
-        {user &&
-            <div>
-                <Link to='/myToys' className='mr-5'>My Toys</Link>
-                <Link to='/addToy'>Add a Toys</Link>
-            </div>
-        }
+    const navItems = <div className='md:flex font-bold'>
+        <li><Link>Home</Link></li>
+        <li><Link to='/allToys'>All Toys</Link></li>
+        <ul>
+            {user &&
+                <li>
+                    <Link to='/myToys'>My Toys</Link>
+                    <Link to='/addToy'>Add a Toys</Link>
+                </li>
+            }
+        </ul>
 
-        <Link>Blog</Link>
+        <li><Link>Blog</Link></li>
     </div>
 
     const handleLogout = () => {
@@ -27,7 +29,7 @@ const Navbar = () => {
             })
     }
     return (
-        <div className="navbar bg-base-100 ">
+        <div className="navbar bg-base-100 my-3">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -47,8 +49,8 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
 
-                {user ? <div className='flex gap-5 items-center'>
-                    <img title={user?.displayName} style={{height:'30px', width:'30px'}} className='btn-circle' src={user?.photoURL} alt="" />
+                {user ? <div className='flex md:gap-5 gap-2 items-center'>
+                    <img title={user?.displayName} style={{ height: '30px', width: '30px' }} className='btn-circle' src={user?.photoURL} alt="" />
                     <button className='btn' onClick={handleLogout}>Logout</button>
                 </div> :
                     <Link to='/login' className="btn w-20">Login</Link>}

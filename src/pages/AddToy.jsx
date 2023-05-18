@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
+import { AuthContext } from '../providers/AuthProvider';
 
 
 const AddToy = () => {
+    const {user} = useContext(AuthContext)
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -41,9 +43,9 @@ const AddToy = () => {
                 <div className='grid grid-cols-2 gap-5'>
                     <input className='p-2 rounded-lg '  {...register("toyName")} placeholder='enter toy name' required />
 
-                    <input className='p-2 rounded-lg '  {...register("sellerName")} placeholder='enter seller name' required />
+                    <input className='p-2 rounded-lg ' defaultValue={user?.displayName}  {...register("sellerName")} placeholder='enter seller name' required />
 
-                    <input className='p-2 rounded-lg'  {...register("photoURL")} placeholder='enter toy photo url' required />
+                    <input className='p-2 rounded-lg' defaultValue={user?.email}  {...register("photoURL")} placeholder='enter toy photo url' required />
 
                     <input className='p-2 rounded-lg'  {...register("email")} placeholder='enter email' required />
 

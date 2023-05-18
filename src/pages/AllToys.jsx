@@ -37,7 +37,7 @@ const AllToys = () => {
                                 <td>{toy.toyName}</td>
                                 <td>{toy.subCategory}</td>
                                 <td>{toy.price}</td>
-                                <td>{toy.avaibaleQuantity}</td>
+                                <td>{toy.availableQuantity}</td>
                                 <td><Link className='btn rounded-lg'>View Deatils</Link></td>
                             </tr>)
                         }
