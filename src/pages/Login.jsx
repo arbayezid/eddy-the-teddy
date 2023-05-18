@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import teddy from '../assets/teddyLogin.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Login = () => {
+    const [error,setError] = useState("")
     const { signInUser } = useContext(AuthContext)
 
     const handleLogin = (event) => {
@@ -23,7 +24,7 @@ const Login = () => {
                 console.log(loggedUser)
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message)
             })
     }
 
@@ -60,6 +61,9 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
+                            </div>
+                            <div className='text-red-800 font-medium text-center mt-5'>
+                                {error}
                             </div>
                             <div className='text-center font-medium mt-5'>
                                 <p>New to this site? <Link to='/register' className='text-blue-600'>Register</Link></p>

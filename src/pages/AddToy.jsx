@@ -1,11 +1,37 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 
 
 const AddToy = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log(data);
+
+        fetch('http://localhost:5000/add-toy', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.insertedId){
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Toy added successfully',
+                        icon: 'success',
+                        confirmButtonText: 'close'
+                      })
+                }
+            })
+    }
+
+
+
     return (
         <div className='mx-20 mt-5'>
             <h2 className='text-3xl text-center mb-10 font-bold'>Add Your Toys</h2>
@@ -26,6 +52,8 @@ const AddToy = () => {
                     <input className='p-2 rounded-lg' {...register("rating")} placeholder='enter toy rating' required />
 
                     <input className='p-2 rounded-lg' {...register("avaibaleQuantity")} placeholder='enter available quantity' required />
+
+                    <input className='p-2 rounded-lg' {...register("subCategory")} placeholder='enter sub category'/>
 
                     <input className='p-2 rounded-lg' {...register("description")} placeholder='enter description' required />
                 </div>

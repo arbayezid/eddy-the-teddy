@@ -13,7 +13,8 @@ const Navbar = () => {
             <div>
                 <Link className='mr-5'>My Toys</Link>
                 <Link to='/addToy'>Add a Toys</Link>
-            </div>}
+            </div>
+        }
 
         <Link>Blog</Link>
     </div>
@@ -45,7 +46,11 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user ? <button className='btn' onClick={handleLogout}>Logout</button> :
+
+                {user ? <div className='flex gap-5 items-center'>
+                    <img title={user?.displayName} style={{height:'30px', width:'30px'}} className='btn-circle' src={user?.photoURL} alt="" />
+                    <button className='btn' onClick={handleLogout}>Logout</button>
+                </div> :
                     <Link to='/login' className="btn w-20">Login</Link>}
             </div>
         </div>
