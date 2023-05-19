@@ -1,24 +1,24 @@
 import React, { useContext } from 'react';
 import logo from '../assets/tadyLogo.png'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Navbar = () => {
 
     const { logOut, user } = useContext(AuthContext)
     const navItems = <div className='md:flex font-bold'>
-        <li><Link>Home</Link></li>
-        <li><Link to='/allToys'>All Toys</Link></li>
+        <li><NavLink className={({ isActive }) => isActive ? 'text-blue-500' : ''} to='/'>Home</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? 'text-blue-500' : ''} to='/allToys'>All Toys</NavLink></li>
         <ul>
             {user &&
                 <li>
-                    <Link to='/myToys'>My Toys</Link>
-                    <Link to='/addToy'>Add a Toys</Link>
+                    <NavLink className={({ isActive }) => isActive ? 'text-blue-500' : ''} to='/myToys'>My Toys</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? 'text-blue-500' : ''} to='/addToy'>Add a Toys</NavLink>
                 </li>
             }
         </ul>
 
-        <li><Link>Blog</Link></li>
+        <li><NavLink className={({ isActive }) => isActive ? 'text-blue-500' : ''} to='/blog'>Blog</NavLink></li>
     </div>
 
     const handleLogout = () => {

@@ -13,7 +13,7 @@ const AllToys = () => {
 
 
     return (
-        <div className='mx-20'>
+        <div className='mx-10'>
             <h2 className='text-3xl text-center font-bold my-5'>List Of All Toys</h2>
 
             <div className="overflow-x-auto">
@@ -38,7 +38,7 @@ const AllToys = () => {
                                 <td>{toy.subCategory}</td>
                                 <td>{toy.price}</td>
                                 <td>{toy.availableQuantity}</td>
-                                <td><Link className='btn rounded-lg'>View Deatils</Link></td>
+                                <td><Link to={`/allToys/${toy._id}`} className='btn rounded-lg'>View Deatils</Link></td>
                             </tr>)
                         }
                     </tbody>
