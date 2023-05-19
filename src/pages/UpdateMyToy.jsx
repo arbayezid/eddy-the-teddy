@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../providers/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../hooks/useTitle';
 
 const UpdateMyToy = () => {
     const myToy = useLoaderData()
     console.log('update toy', myToy)
+    useTitle('Update Toy')
 
     const { _id, availableQuantity, description, email, price, photoURL, rating, sellerName, subCategory, toyName } = myToy
 
@@ -22,10 +24,11 @@ const UpdateMyToy = () => {
         const rating = form.rating.value;
         const availableQuantity = form.quantity.value;
         const description = form.description.value;
+        const subCategory = form.subCategory.value;
 
-        const user = {toyName,sellerName,photoURL,email,price,rating, availableQuantity,description}
+        const user = { toyName, sellerName, photoURL, email, price, rating, availableQuantity, description, subCategory }
         console.log(user)
-        
+
 
         fetch(`http://localhost:5000/my-toys/${_id}`, {
             method: 'PUT',
@@ -37,13 +40,13 @@ const UpdateMyToy = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if(data.modifiedCount > 0){
+                if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Updated',
                         text: 'Toy Updated successfully',
                         icon: 'success',
                         confirmButtonText: 'close'
-                      })
+                    })
                 }
             })
     }
@@ -59,7 +62,7 @@ const UpdateMyToy = () => {
                             <span className="label-text">Toy Name:</span>
                         </label>
                         <label>
-                            <input type="text" name='toyName' defaultValue={toyName}  placeholder="Enter Toy name" className="input input-bordered w-full" />
+                            <input type="text" name='toyName' defaultValue={toyName} placeholder="Enter Toy name" className="input input-bordered w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2">
@@ -119,13 +122,22 @@ const UpdateMyToy = () => {
 
                     <div className="form-control md:w-1/2">
                         <label className="label">
+                            <span className="label-text">Sub Category</span>
+                        </label>
+                        <label>
+                            <input type="text" defaultValue={subCategory} placeholder="Sub Category" name='subCategory' className="input input-bordered w-full" />
+                        </label>
+                    </div>
+                </div>
+                <div className='mb-8'>
+                    <div className="form-control w-full">
+                        <label className="label">
                             <span className="label-text">Description</span>
                         </label>
                         <label>
                             <input type="text" defaultValue={description} placeholder="Description" name='description' className="input input-bordered w-full" />
                         </label>
                     </div>
-
                 </div>
                 <input type="submit" value="Update" className='btn btn-block' />
 

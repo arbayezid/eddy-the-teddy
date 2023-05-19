@@ -2,15 +2,17 @@ import React, { useContext, useState } from 'react';
 import teddy from '../assets/teddyLogin.png'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import useTitle from '../hooks/useTitle';
 
 const Login = () => {
-    const [error,setError] = useState("")
-    const { signInUser } = useContext(AuthContext)
+    const [error, setError] = useState("")
+    const { signInUser, googleSignIn } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
+    useTitle('Login')
 
     const from = location.state?.from?.pathname || '/'
-    
+
     const handleLogin = (event) => {
         event.preventDefault();
 
@@ -26,7 +28,19 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser)
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setError(error.message)
@@ -74,6 +88,10 @@ const Login = () => {
                                 <p>New to this site? <Link to='/register' className='text-blue-600'>Register</Link></p>
                             </div>
                         </form>
+                        <div className="divider">OR</div>
+                        <div className='text-center'>
+                            <button title='Google' onClick={handleGoogleSignIn} className='btn btn-circle btn-outline'>G</button>
+                        </div>
                     </div>
                 </div>
             </div>

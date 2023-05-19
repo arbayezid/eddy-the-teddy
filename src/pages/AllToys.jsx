@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../hooks/useTitle';
+import { AuthContext } from '../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AllToys = () => {
     const [toys, setToys] = useState([]);
     const [searchText, setSearchText] = useState("")
+    const { user } = useContext(AuthContext)
+    useTitle('All Toy')
 
     useEffect(() => {
         fetch('http://localhost:5000/all-toys')
@@ -14,11 +19,20 @@ const AllToys = () => {
 
     const handleSearch = () => {
         fetch(`http://localhost:5000/getToyByName/${searchText}`)
-        .then(res => res.json())
-        .then(data => {
-            setToys(data)
-        })
+            .then(res => res.json())
+            .then(data => {
+                setToys(data)
+            })
     }
+
+    // const handleError = () => {
+    //     Swal.fire({
+    //         icon: 'error',
+    //         title: 'No.. No.. No..!',
+    //         text: 'You have to log in first to view details!',
+
+    //     })
+    // }
 
 
 
@@ -57,7 +71,14 @@ const AllToys = () => {
                                 <td>{toy.subCategory}</td>
                                 <td>{toy.price}</td>
                                 <td>{toy.availableQuantity}</td>
-                                <td><Link to={`/allToys/${toy._id}`} className='btn rounded-lg'>View Deatils</Link></td>
+                                <td>
+                                    <Link to={`/allToys/${toy._id}`} className='btn rounded-lg'>View Deatils</Link>
+                                    {/* {
+                                    user ? <Link to={`/allToys/${toy._id}`} className='btn rounded-lg'>View Deatils</Link> : <div>
+                                        <Link onClick={handleError} to='/login' className='btn rounded-lg'>View Deatils</Link>
+                                    </div>   
+                                } */}
+                                </td>
                             </tr>)
                         }
                     </tbody>

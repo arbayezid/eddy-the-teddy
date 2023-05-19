@@ -40,7 +40,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <img style={{ height: '50px', width: '50px' }} src={logo} alt="" />
-                <a className="btn btn-ghost normal-case text-xl">Eddy the Teddy</a>
+                <a className="btn btn-ghost normal-case text-xl">Eddy The Teddy</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

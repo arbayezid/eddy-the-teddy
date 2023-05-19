@@ -3,11 +3,13 @@ import teddy from '../assets/teddyLogin.png'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import useTitle from '../hooks/useTitle';
 
 const Register = () => {
     const [error, setError] = useState("");
-    const { createUser, googleSignIn} = useContext(AuthContext)
+    const { createUser} = useContext(AuthContext)
     const navigate = useNavigate()
+    useTitle('Register')
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -36,17 +38,7 @@ const Register = () => {
             })
     }
 
-    const handleGoogleSignIn = () => {
-        googleSignIn()
-            .then(result => {
-                const loggedUser = result.user
-                console.log(loggedUser)
-                navigate('/')
-            })
-            .catch(error => {
-                setError(error.message)
-            })
-    }
+    
 
     const updateUserInfo = (user,name,photo) =>{
         updateProfile(user, {
@@ -108,10 +100,6 @@ const Register = () => {
                             </div>
 
                         </form>
-                        <div className="divider">OR</div>
-                        <div className='text-center'>
-                            <button title='Google' onClick={handleGoogleSignIn} className='btn btn-circle btn-outline'>G</button>
-                        </div>
                     </div>
                 </div>
             </div>

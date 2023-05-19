@@ -10,6 +10,7 @@ const Footer = () => {
                 <img style={{ height: '70px', width: '70px' }} src={logo} alt="" />
 
                 <p>Eddy the Teddy.<br />Mirpur-1, Dhaka, Bangladesh</p>
+                <p>Phone: 018xxxxxxxx</p>
             </div>
             <div>
                 <span className="footer-title">Social</span>
