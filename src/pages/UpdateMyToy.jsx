@@ -59,7 +59,7 @@ const UpdateMyToy = () => {
                             <span className="label-text">Toy Name:</span>
                         </label>
                         <label>
-                            <input type="text" name='toyName' defaultValue={toyName} placeholder="Enter Toy name" className="input input-bordered w-full" />
+                            <input type="text" name='toyName' defaultValue={toyName}  placeholder="Enter Toy name" className="input input-bordered w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2">
