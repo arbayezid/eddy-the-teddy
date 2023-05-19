@@ -45,9 +45,9 @@ const AddToy = () => {
 
                     <input className='p-2 rounded-lg ' defaultValue={user?.displayName}  {...register("sellerName")} placeholder='enter seller name' required />
 
-                    <input className='p-2 rounded-lg' defaultValue={user?.email}  {...register("photoURL")} placeholder='enter toy photo url' required />
+                    <input className='p-2 rounded-lg'   {...register("photoURL")} placeholder='enter toy photo url' required />
 
-                    <input className='p-2 rounded-lg'  {...register("email")} placeholder='enter email' required />
+                    <input className='p-2 rounded-lg' defaultValue={user?.email}  {...register("email")} placeholder='enter email' required />
 
                     <input className='p-2 rounded-lg'  {...register("price")} placeholder='enter toy price' required />
 

@@ -1,12 +1,16 @@
 import React, { useContext, useState } from 'react';
 import teddy from '../assets/teddyLogin.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Login = () => {
     const [error,setError] = useState("")
     const { signInUser } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
 
+    const from = location.state?.from?.pathname || '/'
+    
     const handleLogin = (event) => {
         event.preventDefault();
 
@@ -22,6 +26,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser)
+                navigate(from, {replace: true})
             })
             .catch(error => {
                 setError(error.message)

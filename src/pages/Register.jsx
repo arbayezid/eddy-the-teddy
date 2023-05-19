@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import teddy from '../assets/teddyLogin.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const [error, setError] = useState("");
-    const { createUser, googleSignIn, user} = useContext(AuthContext)
+    const { createUser, googleSignIn} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -28,6 +29,7 @@ const Register = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 updateUserInfo(loggedUser,name,photo)
+                navigate('/')
             })
             .catch(error => {
                 console.log(error.message)
@@ -39,6 +41,7 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser)
+                navigate('/')
             })
             .catch(error => {
                 setError(error.message)
