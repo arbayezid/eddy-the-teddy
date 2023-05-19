@@ -80,7 +80,7 @@ const MyToys = () => {
                                 <td>{toy.price}</td>
                                 <td>{toy.availableQuantity}</td>
                                 <td>{toy.rating}</td>
-                                <td><Link onClick={() => handleUpdate(toy._id)} className='btn btn-outline rounded-lg'>Update</Link></td>
+                                <td><Link to={`/myToys/${toy._id}`} className='btn btn-outline rounded-lg'>Update</Link></td>
                                 <td><Link onClick={() => handleDelete(toy._id)} className='btn btn-outline rounded-lg'>Delete</Link></td>
                             </tr>)
                         }

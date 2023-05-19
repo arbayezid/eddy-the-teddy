@@ -23,7 +23,7 @@ const AddToy = () => {
                 console.log(data)
                 if(data.insertedId){
                     Swal.fire({
-                        title: 'Success',
+                        title: 'Added',
                         text: 'Toy added successfully',
                         icon: 'success',
                         confirmButtonText: 'close'
