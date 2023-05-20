@@ -13,7 +13,7 @@ const CustomerReview = () => {
                     <div id="item1" className="carousel-item w-full flex  mt-10">
                         <div className='mx-auto flex flex-col items-center space-y-2'>
                             <img style={{ width: '50px', height: '50px' }} src={customer1} className="rounded-full" />
-                            <p>" Great quality! So soft and snuggly. "</p>
+                            <p className='mx-5'>" Great quality! So soft and snuggly. "</p>
                             <h4>Jordan, USA</h4>
                         </div>
                     </div>
@@ -22,7 +22,7 @@ const CustomerReview = () => {
                         <div id="item1" className="carousel-item w-full flex  mt-10">
                             <div className='mx-auto flex flex-col items-center space-y-2'>
                                 <img style={{ width: '50px', height: '50px' }} src={customer2} className="rounded-full" />
-                                <p>" This is an adorable, very soft bear! Gave it as a gift, she loved it!! "</p>
+                                <p className='mx-5'>" This is an adorable, very soft bear! Gave it as a gift, she loved it!! "</p>
                                 <h4>Alex, Uk</h4>
                             </div>
                         </div>
@@ -32,7 +32,7 @@ const CustomerReview = () => {
                         <div id="item1" className="carousel-item w-full flex  mt-10">
                             <div className='mx-auto flex flex-col items-center space-y-2'>
                                 <img style={{ width: '50px', height: '50px' }} src={customer3} className="rounded-full" />
-                                <p>" This little bear was perfect! Nice quality, well made. Very soft & cuddly. Perfect size for a small child. "</p>
+                                <p className='mx-5'>" This little bear was perfect! Nice quality, well made. Very soft & cuddly. Perfect size for a small child. "</p>
                                 <h4>Arik, Canada</h4>
                             </div>
                         </div>
@@ -42,7 +42,7 @@ const CustomerReview = () => {
                         <div id="item1" className="carousel-item w-full flex  mt-10">
                             <div className='mx-auto flex flex-col items-center space-y-2'>
                                 <img style={{ width: '50px', height: '50px' }} src={customer4} className="rounded-full" />
-                                <p>" We bought this as a gift for a friend. It was perfect! Cute and soft as described!! "</p>
+                                <p className='mx-5'>" We bought this as a gift for a friend. It was perfect! Cute and soft as described!! "</p>
                                 <h4>Jones, Mexico</h4>
                             </div>
                         </div>

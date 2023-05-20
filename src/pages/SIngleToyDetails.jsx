@@ -10,7 +10,7 @@ const SingleToyDetails = () => {
 
 
     return (
-        <div className=" flex w-1/2 mx-auto mt-10  shadow-xl bg-slate-50 rounded-xl">
+        <div className="flex w-1/2 mx-auto mt-10  shadow-xl bg-slate-50 rounded-xl">
             <div className='w-1/2' >
                 <img src={photoURL} className='rounded-xl ml-10 mt-10 w-3/4 h-3/4' alt="Shoes" />
             </div>
