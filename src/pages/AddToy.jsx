@@ -6,7 +6,7 @@ import useTitle from '../hooks/useTitle';
 
 
 const AddToy = () => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     useTitle('Add a Toy')
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -23,13 +23,13 @@ const AddToy = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if(data.insertedId){
+                if (data.insertedId) {
                     Swal.fire({
                         title: 'Added',
                         text: 'Toy added successfully',
                         icon: 'success',
                         confirmButtonText: 'close'
-                      })
+                    })
                 }
             })
     }
@@ -51,13 +51,17 @@ const AddToy = () => {
 
                     <input className='p-2 rounded-lg' defaultValue={user?.email}  {...register("email")} placeholder='enter email' required />
 
-                    <input className='p-2 rounded-lg'  {...register("price")} placeholder='enter toy price' required />
+                    <input className='p-2 rounded-lg' type='number' {...register("price", {valueAsNumber: true})} placeholder='enter toy price' required />
 
                     <input className='p-2 rounded-lg' {...register("rating")} placeholder='enter toy rating' required />
 
                     <input className='p-2 rounded-lg' {...register("availableQuantity")} placeholder='enter available quantity' required />
 
-                    <input className='p-2 rounded-lg' {...register("subCategory")} placeholder='enter sub category'/>
+                    <select className="p-2 rounded-lg" {...register("subCategory")}>
+                        <option value="cat">Cat</option>
+                        <option value="dog" >Dog</option>
+                        <option value="dinosaur" >Dinosaur</option>
+                    </select>
 
                     <input className='p-2 rounded-lg' {...register("description")} placeholder='enter description' required />
                 </div>

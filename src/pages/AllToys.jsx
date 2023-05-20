@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useTitle from '../hooks/useTitle';
 import { AuthContext } from '../providers/AuthProvider';
-import Swal from 'sweetalert2';
 
 const AllToys = () => {
     const [toys, setToys] = useState([]);
@@ -24,17 +23,6 @@ const AllToys = () => {
                 setToys(data)
             })
     }
-
-    // const handleError = () => {
-    //     Swal.fire({
-    //         icon: 'error',
-    //         title: 'No.. No.. No..!',
-    //         text: 'You have to log in first to view details!',
-
-    //     })
-    // }
-
-
 
     return (
         <div className='mx-10'>
@@ -64,7 +52,7 @@ const AllToys = () => {
                     </thead>
                     <tbody>
                         {
-                            toys.map((toy, index) => <tr key={toy._id}>
+                            toys?.map((toy, index) => <tr key={toy._id}>
                                 <th>{index + 1}</th>
                                 <td>{toy.sellerName}</td>
                                 <td>{toy.toyName}</td>
@@ -73,11 +61,7 @@ const AllToys = () => {
                                 <td>{toy.availableQuantity}</td>
                                 <td>
                                     <Link to={`/allToys/${toy._id}`} className='btn rounded-lg'>View Deatils</Link>
-                                    {/* {
-                                    user ? <Link to={`/allToys/${toy._id}`} className='btn rounded-lg'>View Deatils</Link> : <div>
-                                        <Link onClick={handleError} to='/login' className='btn rounded-lg'>View Deatils</Link>
-                                    </div>   
-                                } */}
+                                    
                                 </td>
                             </tr>)
                         }

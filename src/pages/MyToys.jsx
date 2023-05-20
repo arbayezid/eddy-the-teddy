@@ -72,7 +72,7 @@ const MyToys = () => {
                     </thead>
                     <tbody>
                         {
-                            toys.map((toy, index) => <tr key={toy._id}>
+                            toys?.map((toy, index) => <tr key={toy._id}>
                                 <th>{index + 1}</th>
                                 <td><img style={{ height: '50px', width: '50px' }} src={toy.photoURL} alt="" className='rounded-xl' /></td>
                                 <td>{toy.email}</td>
