@@ -3,21 +3,22 @@ import { AuthContext } from '../providers/AuthProvider';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useTitle from '../hooks/useTitle';
-import { FaArrowDown} from 'react-icons/fa';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 
 const MyToys = () => {
     const [toys, setToys] = useState([])
+    const [asc, setAsc] = useState(true)
     const { user } = useContext(AuthContext);
     useTitle('My Toy')
 
     useEffect(() => {
-        fetch(`https://assignment-11-server-zeta-puce.vercel.app/my-toys/${user?.email}`)
+        fetch(`https://assignment-11-server-zeta-puce.vercel.app/my-toys/${user?.email}?sort=${asc ? 'asc' : 'desc'}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 setToys(data)
             })
-    }, [user])
+    }, [user,asc])
 
 
     const handleDelete = (id) => {
@@ -64,12 +65,17 @@ const MyToys = () => {
                             <th>Seller</th>
                             <th>Toy Name</th>
                             <th>Sub-category</th>
-                            <th className='flex gap-2 items-center'>Price<FaArrowDown></FaArrowDown> </th> 
+                            <th
+                                onClick={() => setAsc(!asc)}
+                                className='flex gap-1 items-center cursor-pointer'
+                            >Price <button>
+                                    {asc ? <FaArrowDown /> : <FaArrowUp />}
+                                </button> </th>
                             <th>Quantity</th>
                             <th>Ratings</th>
                             <th>Edit</th>
                             <th>Delete</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
