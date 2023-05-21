@@ -3,6 +3,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useTitle from '../hooks/useTitle';
+import { FaArrowDown} from 'react-icons/fa';
 
 const MyToys = () => {
     const [toys, setToys] = useState([])
@@ -63,11 +64,12 @@ const MyToys = () => {
                             <th>Seller</th>
                             <th>Toy Name</th>
                             <th>Sub-category</th>
-                            <th>Price</th>
+                            <th className='flex gap-2 items-center'>Price<FaArrowDown></FaArrowDown> </th> 
                             <th>Quantity</th>
                             <th>Ratings</th>
                             <th>Edit</th>
                             <th>Delete</th>
+                            
                         </tr>
                     </thead>
                     <tbody>

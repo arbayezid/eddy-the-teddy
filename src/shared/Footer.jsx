@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../assets/tadyLogo.png'
-import { FaBeer, FaFacebook, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 
 const Footer = () => {

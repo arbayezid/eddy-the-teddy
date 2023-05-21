@@ -24,7 +24,6 @@ const UpdateMyToy = () => {
         const subCategory = form.subCategory.value;
 
         const user = { toyName, sellerName, photoURL, email, price, rating, availableQuantity, description, subCategory }
-        console.log(user)
 
 
         fetch(`https://assignment-11-server-zeta-puce.vercel.app/my-toys/${_id}`, {
