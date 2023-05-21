@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         {
           path: '/allToys/:id',
           element: <PrivateRoute><SingleToyDetails></SingleToyDetails></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/all-toys/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-11-server-zeta-puce.vercel.app/all-toys/${params.id}`)
         },
         {
           path: '/myToys',
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         {
           path: '/myToys/:id',
           element: <UpdateMyToy></UpdateMyToy>,
-          loader: ({params}) => fetch(`http://localhost:5000/all-toys/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-11-server-zeta-puce.vercel.app/all-toys/${params.id}`)
         },
         {
           path: '/blog',

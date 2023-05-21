@@ -10,7 +10,7 @@ const MyToys = () => {
     useTitle('My Toy')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-toys/${user?.email}`)
+        fetch(`https://assignment-11-server-zeta-puce.vercel.app/my-toys/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -30,7 +30,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/my-toys/${id}`, {
+                fetch(`https://assignment-11-server-zeta-puce.vercel.app/my-toys/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -79,7 +79,7 @@ const MyToys = () => {
                                 <td>{toy.sellerName}</td>
                                 <td>{toy.toyName}</td>
                                 <td>{toy.subCategory}</td>
-                                <td>{toy.price}</td>
+                                <td>${toy.price}</td>
                                 <td>{toy.availableQuantity}</td>
                                 <td>{toy.rating}</td>
                                 <td><Link to={`/myToys/${toy._id}`} className='btn btn-outline rounded-lg'>Update</Link></td>

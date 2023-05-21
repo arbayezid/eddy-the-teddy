@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const CategoryToyDetails = ({ toy }) => {
     const { user } = useContext(AuthContext)
-    const { _id, toyName, availableQuantity, description, email, photoURL, price, rating, sellerName } = toy;
+    const { _id, toyName, photoURL, price, rating } = toy;
 
 
     const handleError = () => {

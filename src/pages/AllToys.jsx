@@ -10,14 +10,14 @@ const AllToys = () => {
     useTitle('All Toy')
 
     useEffect(() => {
-        fetch('http://localhost:5000/all-toys')
+        fetch('https://assignment-11-server-zeta-puce.vercel.app/all-toys')
             .then(res => res.json())
             .then(data => setToys(data))
     }, [])
 
 
     const handleSearch = () => {
-        fetch(`http://localhost:5000/getToyByName/${searchText}`)
+        fetch(`https://assignment-11-server-zeta-puce.vercel.app/getToyByName/${searchText}`)
             .then(res => res.json())
             .then(data => {
                 setToys(data)
@@ -57,7 +57,7 @@ const AllToys = () => {
                                 <td>{toy.sellerName}</td>
                                 <td>{toy.toyName}</td>
                                 <td>{toy.subCategory}</td>
-                                <td>{toy.price}</td>
+                                <td>${toy.price}</td>
                                 <td>{toy.availableQuantity}</td>
                                 <td>
                                     <Link to={`/allToys/${toy._id}`} className='btn rounded-lg'>View Deatils</Link>

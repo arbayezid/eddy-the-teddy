@@ -1,13 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import { useForm } from "react-hook-form";
-import { AuthContext } from '../providers/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useTitle from '../hooks/useTitle';
 
 const UpdateMyToy = () => {
     const myToy = useLoaderData()
-    console.log('update toy', myToy)
     useTitle('Update Toy')
 
     const { _id, availableQuantity, description, email, price, photoURL, rating, sellerName, subCategory, toyName } = myToy
@@ -30,7 +27,7 @@ const UpdateMyToy = () => {
         console.log(user)
 
 
-        fetch(`http://localhost:5000/my-toys/${_id}`, {
+        fetch(`https://assignment-11-server-zeta-puce.vercel.app/my-toys/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
